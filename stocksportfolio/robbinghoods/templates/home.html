@@ -4,28 +4,47 @@
 {% if ticker %}
 	{{ticker}}
 {% endif %}
-
 {% if api %}
-
 	{% if api == "error..." %}
 
 		There was most likely a spelling issue or the stock doesn't exist
 
 	{% else %}
+		<table class="table table-striped table-bordered table-hover">
 
-		<h1>{{ api.companyName }}</h1><br/>
-		Price: {{ api.latestPrice }}<br/>
-		Previous Close: ${{ api.previousClose }}<br/>
-		Market Cap: {{ api.marketCap }}<br/>
-		YTD Change: {{ api.ytdChange }}<br/>
-		52 Week High: {{ api.week52High }}<br/>
-		52 Week Low: {{ api.week52Low }}<br/>
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Company Symbol</th>
+	      <th scope="col">Price</th>
+	      <th scope="col">Previous Close</th>
+	      <th scope="col">Market Cap</th>
+	      <th scope="col">52 Wk High</th>
+	      <th scope="col">52 Wk Low</th>
+	      <th scope="col">YTD Change</th>
 
+	    </tr>
+	  </thead>
+	  <tbody>
+		
+		  <tr>
+			<th scope="row">{{ api.companyName }}</th>
+			<td>Price: ${{ api.latestPrice }}</td>
+			<td>Previous Close: ${{ api.previousClose }}</td>
+			<td>Market Cap: {{ api.marketCap }}</td>
+			<td>YTD Change: {{ api.ytdChange }}%</td>
+			<td>52 Week High: {{ api.week52High }}</td>
+			<td>52 Week Low: {{ api.week52Low }}</td>
+		</tr>
+
+
+				
+		  
+	  	</tbody>
+		</table>
 
 	{% endif %}
 
 {% endif %}
-
 
 {% endblock %}
 
